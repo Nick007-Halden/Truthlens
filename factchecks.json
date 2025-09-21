@@ -1,0 +1,63 @@
+[
+  {
+    "id": "fc1",
+    "title": "Debunked: Vaccines and Infertility",
+    "url": "https://example.org/factcheck/vaccines-infertility",
+    "label": "false",
+    "summary": "No evidence supports that vaccines cause infertility. The cited 'study' was misreported and had a tiny sample size.",
+    "keywords": [
+      "vaccine",
+      "infertility",
+      "study",
+      "sample size",
+      "causes"
+    ],
+    "micro_lesson": "Tip: Check sample size and look for peer-reviewed replication before accepting extraordinary claims.",
+    "images": [
+      {
+        "filename": "infertility_photo.jpg",
+        "caption": "sample image"
+      }
+    ],
+    "date": "2019-05-12"
+  },
+  {
+    "id": "fc2",
+    "title": "True: Major Study Confirms X Intervention Helps",
+    "url": "https://example.org/factcheck/major-study-x",
+    "label": "true",
+    "summary": "A large peer-reviewed meta-analysis (2022) supports the claim when measured properly.",
+    "keywords": [
+      "meta-analysis",
+      "peer-reviewed",
+      "study",
+      "2022",
+      "confirms"
+    ],
+    "micro_lesson": "Tip: Prefer meta-analyses and peer-reviewed studies over single-sample reports.",
+    "images": [],
+    "date": "2022-08-01"
+  },
+  {
+    "id": "fc3",
+    "title": "Context: Old Photo Reused in New Event",
+    "url": "https://example.org/factcheck/old-photo",
+    "label": "context",
+    "summary": "This photo was originally published in 2018 during an unrelated event and is now being reused with misleading captions.",
+    "keywords": [
+      "photo",
+      "2018",
+      "flood",
+      "kerala",
+      "old"
+    ],
+    "micro_lesson": "Tip: Reverse-search images to check first publication date and original caption.",
+    "images": [
+      {
+        "filename": "kerala2018.jpg",
+        "caption": "kerala floods 2018"
+      }
+    ],
+    "date": "2018-09-05"
+  }
+]

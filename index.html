@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>TruthLens Coach - Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <header class="topbar"><div class="brand">TruthLens Coach (Prototype)</div></header>
+  <main class="container">
+    <section class="card">
+      <h2>1. Analyze a claim (paste text)</h2>
+      <textarea id="claim" rows="5" placeholder="Paste a claim or headline here...">Vaccines cause infertility in 90% of cases, says new study</textarea>
+      <button id="analyzeBtn">Analyze</button>
+      <div id="analysis" class="result"></div>
+    </section>
+    <section class="card">
+      <h2>2. Upload image (PastCheck)</h2>
+      <input type="file" id="imageInput" accept="image/*"/>
+      <button id="uploadBtn">Upload & Check</button>
+      <div id="imgResult" class="result"></div>
+    </section>
+    <section class="card small">
+      <h3>How this demo works</h3>
+      <p>This is a hackathon prototype. It uses a small seeded corpus for matching (local JSON). For production, integrate Vertex AI (Gemini), Vertex Search, and a reverse-image index.</p>
+      <p><strong>Local link to try:</strong> <code>http://localhost:8000</code></p>
+    </section>
+  </main>
+
+<script>
+async function analyzeClaim() {
+  const claim = document.getElementById('claim').value;
+  const resEl = document.getElementById('analysis');
+  resEl.innerHTML = '<div class="muted">Analyzing…</div>';
+  const resp = await fetch('/analyze', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({claim})});
+  const data = await resp.json();
+  resEl.innerHTML = `<div class="verdict">${data.verdict}</div>
+    <div class="explanation">${data.explanation}</div>
+    <div class="micro"><strong>Micro-lesson:</strong> ${data.micro_lesson}</div>
+    <div class="matches">${data.matched && data.matched.length ? '<strong>Matched sources:</strong><ul>' + data.matched.map(m => '<li><a href="'+m.url+'" target="_blank">'+m.title+'</a></li>').join('') + '</ul>' : ''}</div>`;
+}
+
+async function uploadImage() {
+  const f = document.getElementById('imageInput').files[0];
+  if (!f) return alert('Choose an image file');
+  const fd = new FormData();
+  fd.append('image', f);
+  const resEl = document.getElementById('imgResult');
+  resEl.innerHTML = '<div class="muted">Checking image…</div>';
+  const resp = await fetch('/upload-image', {method:'POST', body: fd});
+  const data = await resp.json();
+  resEl.innerHTML = `<div class="verdict">${data.verdict}</div><div class="explanation">${data.explanation}</div><div class="micro"><strong>Micro-lesson:</strong> ${data.micro_lesson}</div>`;
+}
+
+document.getElementById('analyzeBtn').addEventListener('click', analyzeClaim);
+document.getElementById('uploadBtn').addEventListener('click', uploadImage);
+</script>
+</body>
+</html>
