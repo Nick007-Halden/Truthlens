@@ -1,0 +1,9 @@
+
+Git steps to push to GitHub quickly:
+- git init
+- git add .
+- git commit -m "TruthLens Coach prototype - initial demo"
+- Create repo on GitHub (web UI) and follow instructions, e.g.:
+  git remote add origin https://github.com/<your-username>/truthlens-coach.git
+  git branch -M main
+  git push -u origin main

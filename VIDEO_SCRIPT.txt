@@ -1,0 +1,22 @@
+
+3-minute video script (copy-paste for recording)
+
+Title: TruthLens Coach - Demo (Syntax Shenanigans)
+
+Intro (0:00-0:10)
+- On-screen title and team names.
+
+Problem (0:10-0:40)
+- "Misinformation spreads quickly. Users need tools that not only flag false content but teach why it's false."
+
+Demo (0:40-1:40)
+- Show the website at http://localhost:8000
+- Paste the pre-filled claim and click Analyze. Explain the verdict, show micro-lesson.
+- Upload the file named 'kerala2018.jpg' (or a sample image) and show PastCheck output.
+
+Architecture (1:40-2:30)
+- Mention this is a prototype using a seeded corpus (factchecks.json).
+- For production, integrate Vertex AI Gemini, Vertex Search, and a reverse-image index (see BACKEND_NOTES.md).
+
+Closing (2:30-3:00)
+- Impact and next steps: explainability, scaling, browser extension (TruthLens overlay).
